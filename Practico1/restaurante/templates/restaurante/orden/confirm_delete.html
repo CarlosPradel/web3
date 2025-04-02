@@ -1,0 +1,24 @@
+{% extends 'restaurante/base.html' %}
+{% block content %}
+  <div class="card">
+    <div class="card-body">
+      <h4>¿Estás seguro que deseas eliminar esta orden?</h4>
+      <p>
+        Orden #{{ orden.id }} - Estado: {{ orden.estado }}<br>
+        Mesa: {{ orden.mesa }}<br>
+        Mesero: {{ orden.mesero }}<br>
+        Platos:
+        <ul>
+          {% for plato in orden.platos.all %}
+            <li>{{ plato.nombre }}</li>
+          {% endfor %}
+        </ul>
+      </p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'orden_list' %}" class="btn btn-secondary">Cancelar</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}

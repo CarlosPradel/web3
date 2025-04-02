@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Restaurante{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 2rem;
+            background-color: #f9f9f9;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Navegación -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-4 rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">🍽️ Restaurante</a>
+                <div class="collapse navbar-collapse show">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'cliente_list' %}">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'plato_list' %}">Platos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'mesero_list' %}">Meseros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'mesa_list' %}">Mesas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'orden_list' %}">Órdenes</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

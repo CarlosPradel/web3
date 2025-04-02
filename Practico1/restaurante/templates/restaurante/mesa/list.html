@@ -1,0 +1,21 @@
+{% extends 'restaurante/base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Mesas</h2>
+    <a href="{% url 'mesa_create' %}" class="btn btn-primary">➕ Nueva Mesa</a>
+  </div>
+
+  <ul class="list-group">
+    {% for mesa in mesas %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Mesa #{{ mesa.numero }}
+        <div>
+          <a href="{% url 'mesa_update' mesa.pk %}" class="btn btn-sm btn-warning">Editar</a>
+          <a href="{% url 'mesa_delete' mesa.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+        </div>
+      </li>
+    {% empty %}
+      <li class="list-group-item">No hay mesas registradas.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

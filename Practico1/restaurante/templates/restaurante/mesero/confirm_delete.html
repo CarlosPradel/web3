@@ -1,0 +1,14 @@
+{% extends 'restaurante/base.html' %}
+{% block content %}
+  <div class="card">
+    <div class="card-body">
+      <h4>¿Estás seguro que deseas eliminar este mesero?</h4>
+      <p><strong>{{ mesero.nombre }} {{ mesero.apellido }}</strong></p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'mesero_list' %}" class="btn btn-secondary">Cancelar</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}

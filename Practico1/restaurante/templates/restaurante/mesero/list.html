@@ -1,0 +1,21 @@
+{% extends 'restaurante/base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Meseros</h2>
+    <a href="{% url 'mesero_create' %}" class="btn btn-primary">➕ Nuevo Mesero</a>
+  </div>
+
+  <ul class="list-group">
+    {% for mesero in meseros %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ mesero.nombre }} {{ mesero.apellido }} - {{ mesero.telefono }}
+        <div>
+          <a href="{% url 'mesero_update' mesero.pk %}" class="btn btn-sm btn-warning">Editar</a>
+          <a href="{% url 'mesero_delete' mesero.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+        </div>
+      </li>
+    {% empty %}
+      <li class="list-group-item">No hay meseros registrados.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

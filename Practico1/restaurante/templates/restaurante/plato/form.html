@@ -1,0 +1,16 @@
+{% extends 'restaurante/base.html' %}
+{% block content %}
+  <div class="card">
+    <div class="card-header">
+      <h4>{% if form.instance.pk %}Editar Plato{% else %}Nuevo Plato{% endif %}</h4>
+    </div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'plato_list' %}" class="btn btn-secondary">Cancelar</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}

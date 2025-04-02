@@ -1,0 +1,21 @@
+{% extends 'restaurante/base.html' %}
+{% block content %}
+  <div class="card">
+    <div class="card-header">
+      <h4>{% if form.instance.pk %}Editar Orden{% else %}Nueva Orden{% endif %}</h4>
+    </div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+          <div class="alert alert-danger">
+            {{ form.errors }}
+          </div>
+        {% endif %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'orden_list' %}" class="btn btn-secondary">Cancelar</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}
