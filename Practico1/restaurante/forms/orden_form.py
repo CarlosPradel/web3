@@ -15,17 +15,17 @@ class OrdenForm(forms.ModelForm):
         estado = cleaned_data.get('estado')
         platos = cleaned_data.get('platos')
 
-        # Validar que la orden tenga al menos un plato
+
         if not platos or len(platos) == 0:
             raise forms.ValidationError('⚠️ La orden debe tener al menos un plato.')
 
-        # Validar que una orden cerrada no se pueda editar
+
         if self.instance.pk:
             instancia_actual = Orden.objects.get(pk=self.instance.pk)
             if instancia_actual.estado == 'cerrada':
                 raise forms.ValidationError('❌ No puedes modificar una orden que ya está cerrada.')
 
-        # Solo una orden abierta por mesa
+
         if mesa and estado == 'abierta':
             ordenes_abiertas = Orden.objects.filter(mesa=mesa, estado='abierta')
             if self.instance.pk:
