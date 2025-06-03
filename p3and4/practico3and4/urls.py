@@ -13,6 +13,7 @@ from practico3and4.api.views.admin_views import (
     VentasViewSet,
     UsuarioViewSet
 )
+from practico3and4.api.views.top_libros import TopLibrosView
 
 router = DefaultRouter()
 
@@ -29,8 +30,9 @@ router.register(r'admin/ventas', VentasViewSet, basename='admin-ventas')
 router.register(r'admin/usuarios', UsuarioViewSet, basename='admin-usuarios')
 
 urlpatterns = [
+    path('libros/top/', TopLibrosView.as_view(), name='top-libros'),
     path('', include(router.urls)),
     path('comprar/', CrearCompraView.as_view(), name='crear-compra'),
     path('auth/registro/', RegistroUsuarioView.as_view(), name='registro-usuario'),
     path('auth/login/', LoginView.as_view(), name='login'),
-]
+]   

@@ -12,5 +12,6 @@ class Compra(models.Model):
 
 class DetalleCompra(models.Model):
     compra = models.ForeignKey(Compra, related_name='detalles', on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
     libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
     precio_unitario = models.DecimalField(max_digits=8, decimal_places=2)
